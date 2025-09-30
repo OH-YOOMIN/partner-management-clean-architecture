@@ -1,0 +1,8 @@
+dependencies {
+    implementation(project(":partner-common"))
+
+    // Apache Commons
+    implementation("org.apache.commons:commons-lang3")
+}
+jar.enabled = true
+bootJar.enabled = false

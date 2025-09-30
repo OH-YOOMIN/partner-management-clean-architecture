@@ -1,0 +1,35 @@
+dependencies {
+    // Spring Boot
+    api('org.springframework.boot:spring-boot-starter-data-jpa')
+    api("org.springframework.boot:spring-boot-starter-webflux")
+
+    // Spring Framework
+    implementation('org.springframework:spring-context')
+
+    // Third party library
+    implementation("org.apache.commons:commons-lang3")
+    implementation("commons-validator:commons-validator:1.7")
+
+    // Jackson
+    implementation("com.fasterxml.jackson.core:jackson-annotations")
+    implementation("com.fasterxml.jackson.core:jackson-databind")
+    implementation("org.codehaus.jackson:jackson-core-asl:1.9.13")
+    implementation("org.codehaus.jackson:jackson-mapper-asl:1.9.13")
+
+    // QueryDSL
+    api("com.querydsl:querydsl-jpa")
+    implementation("com.querydsl:querydsl-apt")
+    annotationProcessor(group: "com.querydsl", name: "querydsl-apt", classifier: "jpa")
+    annotationProcessor("jakarta.annotation:jakarta.annotation-api")
+    annotationProcessor("jakarta.persistence:jakarta.persistence-api")
+
+    // PostgreSQL JDBC
+    runtimeOnly('org.postgresql:postgresql')
+
+    // Internal project module dependency
+    implementation(project(":partner-common"))
+    implementation(project(':partner-domain'))
+
+}
+jar.enabled = true
+bootJar.enabled = false

@@ -1,0 +1,14 @@
+dependencies {
+    // Third party library
+    implementation("org.apache.commons:commons-lang3")
+
+    // Jackson
+    implementation("com.fasterxml.jackson.core:jackson-annotations")
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+jar.enabled = true
+bootJar.enabled = false

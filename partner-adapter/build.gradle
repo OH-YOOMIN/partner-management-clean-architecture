@@ -1,0 +1,28 @@
+dependencies {
+
+    // Spring Web
+    implementation("org.springframework.boot:spring-boot-starter-web")
+
+    // Validation
+    implementation("jakarta.validation:jakarta.validation-api")
+
+    // Jackson
+    implementation("com.fasterxml.jackson.core:jackson-databind")
+
+    // Apache Commons
+    implementation("org.apache.commons:commons-lang3")
+
+    // Swagger
+    implementation("io.swagger:swagger-annotations:1.6.0")
+
+    // 테스트
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+
+    // Internal project module dependency
+    implementation(project(':partner-common'))
+    implementation(project(':partner-domain'))
+}
+jar.enabled = true
+bootJar.enabled = false

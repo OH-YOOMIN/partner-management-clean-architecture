@@ -1,0 +1,67 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.6.12' apply false
+    id 'io.spring.dependency-management' version '1.0.14.RELEASE' apply false
+}
+
+ext {
+    springCloudVersion = "2021.0.5"
+    swaggerVersion = "2.9.2"
+    swaggerModuleVersion = "1.5.24"
+    mapstructVersion = "1.5.2.Final"
+    mapstructBindingVersion = "0.2.0"
+}
+
+allprojects {
+    group = 'com.oynee.portfolio'
+    version = '0.1.0'
+}
+
+subprojects {
+    apply plugin: 'java-library'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    java {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    configurations {
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
+
+    dependencies {
+        // MapStruct
+        implementation "org.mapstruct:mapstruct:${mapstructVersion}"
+        annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+        annotationProcessor "org.projectlombok:lombok-mapstruct-binding:${mapstructBindingVersion}"
+
+        // Lombok
+        compileOnly "org.projectlombok:lombok"
+        annotationProcessor "org.projectlombok:lombok"
+        testCompileOnly "org.projectlombok:lombok"
+        testAnnotationProcessor "org.projectlombok:lombok"
+
+        // Jackson
+        implementation "com.fasterxml.jackson.core:jackson-annotations"
+        implementation "com.fasterxml.jackson.core:jackson-databind"
+
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
+        }
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
