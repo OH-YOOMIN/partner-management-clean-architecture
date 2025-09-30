@@ -6,8 +6,6 @@ plugins {
 
 ext {
     springCloudVersion = "2021.0.5"
-    swaggerVersion = "2.9.2"
-    swaggerModuleVersion = "1.5.24"
     mapstructVersion = "1.5.2.Final"
     mapstructBindingVersion = "0.2.0"
 }
