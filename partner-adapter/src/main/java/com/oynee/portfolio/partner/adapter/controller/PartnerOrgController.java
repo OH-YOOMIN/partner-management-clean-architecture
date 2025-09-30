@@ -5,10 +5,10 @@ import com.oynee.portfolio.partner.adapter.request.PartnerOrganizationSaveReques
 import com.oynee.portfolio.partner.adapter.response.PartnerOrganizationResponse;
 import com.oynee.portfolio.partner.domain.org.port.input.RegisterPartnerOrganizationUseCase;
 import com.oynee.portfolio.partner.domain.org.port.input.RetrievePartnerOrganizationUseCase;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -22,15 +22,15 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(path = "/v1/partner", produces = APPLICATION_JSON_VALUE)
-@Api(tags = "제휴 조직")
+@Tag(name = "제휴 조직", description = "제휴 조직 관련 API")
 public class PartnerOrgController {
     private final RetrievePartnerOrganizationUseCase retrievePartnerOrganizationUseCase;
     private final RegisterPartnerOrganizationUseCase registerPartnerOrganizationUseCase;
 
     private final PartnerOrgMapper partnerOrgMapper;
 
-    @ApiOperation(value = "")
     @PostMapping("/organizations")
+    @Operation(summary = "제휴 조직 등록")
     public ResponseEntity<Void> saveOrganization(
             @Valid @RequestBody PartnerOrganizationSaveRequest request
     ) {
@@ -45,13 +45,13 @@ public class PartnerOrgController {
         return ResponseEntity.ok().build();
     }
 
-    @ApiOperation(value = "제휴 조직 단건 조회")
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "조회 성공"),
-            @ApiResponse(code = 404, message = "해당 조직을 찾을 수 없음"),
-            @ApiResponse(code = 500, message = "서버 오류")
-    })
     @GetMapping("/organizations/{orgId}")
+    @Operation(summary = "제휴 조직 단건 조회")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "조회 성공"),
+            @ApiResponse(responseCode = "404", description = "해당 조직을 찾을 수 없음"),
+            @ApiResponse(responseCode = "500", description = "서버 오류")
+    })
     public ResponseEntity<PartnerOrganizationResponse> getOrganization(
             @PathVariable Long orgId
     ) {

@@ -2,42 +2,47 @@ package com.oynee.portfolio.partner.adapter.request;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Builder(builderClassName = "POJOBuilder")
 @Getter
 @RequiredArgsConstructor
 @ToString
-@ApiModel("제휴 생성 요청")
+@Schema(description = "제휴 생성 요청")
 @JsonDeserialize(builder = PartnershipSaveRequest.POJOBuilder.class)
 public class PartnershipSaveRequest {
 
-    @ApiModelProperty("브랜드 단위 제휴 시 조직 ID")
+    @Schema(description = "브랜드 단위 제휴 시 조직 ID")
     private final Long partnerOrgId;
 
-    @ApiModelProperty("매장 단위 제휴 시 매장 ID")
+    @Schema(description = "매장 단위 제휴 시 매장 ID")
     private final Long partnerStoreId;
 
-    @ApiModelProperty(value = "제휴 시작일", required = true)
+    @Schema(description = "제휴 시작일", requiredMode = RequiredMode.REQUIRED)
+    @NotNull
     private final LocalDate startDate;
 
-    @ApiModelProperty("제휴 종료일")
+    @Schema(description = "제휴 종료일")
     private final LocalDate endDate;
 
-    @ApiModelProperty(value = "수수료율 (%)", required = true)
+    @Schema(description = "수수료율 (%)", requiredMode = RequiredMode.REQUIRED)
+    @NotNull
     private final Double commissionRate;
 
-    @ApiModelProperty(value = "활성화 여부")
+    @Schema(description = "활성화 여부")
     private final boolean activeFlag;
 
-    @ApiModelProperty(value = "등록자 ID", required = true)
+    @Schema(description = "등록자 ID", requiredMode = RequiredMode.REQUIRED)
+    @NotBlank
     private final String createdBy;
 
     @JsonPOJOBuilder(withPrefix = "")

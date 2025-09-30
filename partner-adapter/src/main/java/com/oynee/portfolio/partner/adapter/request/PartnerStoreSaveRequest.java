@@ -2,36 +2,42 @@ package com.oynee.portfolio.partner.adapter.request;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
+import javax.validation.constraints.NotBlank;
+
 @Builder(builderClassName = "POJOBuilder")
 @Getter
 @RequiredArgsConstructor
 @ToString
-@ApiModel("파트너 매장 생성 요청")
+@Schema(description = "파트너 매장 생성 요청")
 @JsonDeserialize(builder = PartnerStoreSaveRequest.POJOBuilder.class)
 public class PartnerStoreSaveRequest {
-    @ApiModelProperty("소속 조직 ID")
+
+    @Schema(description = "소속 조직 ID")
     private final Long partnerOrgId;
 
-    @ApiModelProperty(value = "매장명", required = true)
+    @Schema(description = "매장명", requiredMode = RequiredMode.REQUIRED)
+    @NotBlank
     private final String name;
 
-    @ApiModelProperty(value = "매장 코드", required = true)
+    @Schema(description = "매장 코드", requiredMode = RequiredMode.REQUIRED)
+    @NotBlank
     private final String code;
 
-    @ApiModelProperty("주소")
+    @Schema(description = "주소")
     private final String address;
 
-    @ApiModelProperty("전화번호")
+    @Schema(description = "전화번호")
     private final String phone;
 
-    @ApiModelProperty(value = "등록자 ID", required = true)
+    @Schema(description = "등록자 ID", requiredMode = RequiredMode.REQUIRED)
+    @NotBlank
     private final String createdBy;
 
     @JsonPOJOBuilder(withPrefix = "")

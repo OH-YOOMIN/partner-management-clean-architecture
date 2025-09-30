@@ -12,6 +12,9 @@ dependencies {
     // P6spy
     implementation("com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.0")
 
+    // SpringDoc
+    implementation "org.springdoc:springdoc-openapi-ui:1.7.0"
+
     // Internal project module dependency
     implementation(project(':partner-adapter'))
     implementation(project(':partner-application'))

@@ -13,7 +13,7 @@ dependencies {
     implementation("org.apache.commons:commons-lang3")
 
     // Swagger
-    implementation("io.swagger:swagger-annotations:1.6.0")
+    implementation "org.springdoc:springdoc-openapi-ui:1.7.0"
 
     // 테스트
     testImplementation('org.springframework.boot:spring-boot-starter-test') {

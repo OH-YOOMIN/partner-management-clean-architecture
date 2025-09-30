@@ -3,10 +3,10 @@ package com.oynee.portfolio.partner.adapter.controller;
 import com.oynee.portfolio.partner.adapter.mapper.PartnerStoreMapper;
 import com.oynee.portfolio.partner.adapter.response.PartnerStoreResponse;
 import com.oynee.portfolio.partner.domain.store.port.input.RetrievePartnerStoreUseCase;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -21,17 +21,17 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(path = "/v1/partner", produces = APPLICATION_JSON_VALUE)
-@Api(tags = "제휴 매장")
+@Tag(name = "제휴 매장", description = "제휴 매장 관련 API")
 public class PartnerStoreController {
     private final RetrievePartnerStoreUseCase  retrievePartnerStoreUseCase;
 
     private final PartnerStoreMapper partnerStoreMapper;
 
-    @ApiOperation(value = "제휴 매장 단건 조회")
+    @Operation(summary = "제휴 매장 단건 조회")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "조회 성공"),
-            @ApiResponse(code = 404, message = "해당 매장을 찾을 수 없음"),
-            @ApiResponse(code = 500, message = "서버 오류")
+            @ApiResponse(responseCode = "200", description = "조회 성공"),
+            @ApiResponse(responseCode = "404", description = "해당 매장을 찾을 수 없음"),
+            @ApiResponse(responseCode = "500", description = "서버 오류")
     })
     @GetMapping("/stores/{storeId}")
     public ResponseEntity<PartnerStoreResponse> getPartnerStore(
