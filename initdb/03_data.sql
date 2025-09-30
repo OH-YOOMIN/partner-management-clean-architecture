@@ -16,8 +16,8 @@ VALUES
 
 INSERT INTO partnership (partner_org_id, partner_store_id, start_date, end_date, commission_rate, created_by, updated_by)
 VALUES
-    (1, NULL, '2025-01-01', NULL, 5.0, 'MONTHLY', 'admin', 'admin'),  -- 배민치킨 본사 계약
-    (2, NULL, '2025-02-01', NULL, 4.0, 'MONTHLY', 'admin', 'admin');  -- 요기버거 본사 계약
+    (1, NULL, '2025-01-01', NULL, 5.0, 'admin', 'admin'),  -- 배민치킨 본사 계약
+    (2, NULL, '2025-02-01', NULL, 4.0, 'admin', 'admin');  -- 요기버거 본사 계약
 
 INSERT INTO partnership (partner_org_id, partner_store_id, start_date, end_date, commission_rate, created_by, updated_by)
 VALUES
