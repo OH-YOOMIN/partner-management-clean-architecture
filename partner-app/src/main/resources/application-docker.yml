@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: partner
+
+  main:
+    allow-bean-definition-overriding: true
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/oynee_db
+    username: oynee
+    password: oynee1234
+
+  jpa:
+    database: postgresql
+    open-in-view: false
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+        highlight_sql: true
+        default_schema: partner
+
+server:
+  port: 9090

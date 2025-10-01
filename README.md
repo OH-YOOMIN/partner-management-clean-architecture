@@ -42,7 +42,7 @@
 ## 📂 모듈 구조
 ```
 partner
-├── partner-app-api # Spring Boot Application (실행 모듈)
+├── partner-app # Spring Boot Application (실행 모듈)
 ├── partner-application # 유즈케이스 구현, 트랜잭션 관리
 ├── partner-domain # 도메인 모델 및 규칙 (비즈니스 로직 핵심)
 ├── partner-adapter # Inbound Adapter (REST Controller, Request/Response DTO)

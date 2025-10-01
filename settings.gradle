@@ -1,7 +1,8 @@
 rootProject.name = 'partner'
-include 'partner-adapter'
+
+include 'partner-app'
+include 'partner-adapter:inbound'
+include 'partner-adapter:outbound'
+include 'partner-application'
 include 'partner-domain'
 include 'partner-common'
-include 'partner-infrastructure'
-include 'partner-app-api'
-include 'partner-application'
