@@ -42,23 +42,36 @@
 ## 📂 모듈 구조
 ```
 partner
-├── partner-app # Spring Boot Application (실행 모듈)
-├── partner-application # 유즈케이스 구현, 트랜잭션 관리
-├── partner-domain # 도메인 모델 및 규칙 (비즈니스 로직 핵심)
-├── partner-adapter # Inbound Adapter (REST Controller, Request/Response DTO)
-├── partner-infrastructure # Outbound Adapter (DB, external client 등에 대한 기술 및 구현체)
-└── partner-common # 공통 모듈
+├── partner-app                   # Spring Boot Application (실행 모듈)
+├── partner-domain                # 도메인 모델 및 규칙 (비즈니스 로직 핵심)
+├── partner-application           # 유즈케이스 구현, 트랜잭션 관리
+├── partner-adapter-inbound       # Inbound Adapter (REST Controller, Request/Response DTO)
+├── partner-adapter-outbound      # Outbound Adapter (DB, external client 등에 대한 기술 및 구현체)
+└── partner-common                # 공통 모듈
 ```
 ---
 
 ## 🚀 실행 방법
+
+### 1. 로컬 실행 (H2, 기본 프로파일)
+
+별도의 환경 설정 없이 **H2 인메모리 DB**로 애플리케이션을 실행할 수 있습니다.
+
+1. 애플리케이션 실행
+   ```bash
+   ./gradlew bootRun
+
+### 2. Docker 실행 (PostgreSQL)
+
+PostgreSQL을 직접 띄워서 실행하려면 Docker Compose를 이용합니다.
+
 1. PostgreSQL 실행 (Docker)
    ```bash
    docker-compose up -d
 
-2. 애플리케이션 실행 : 별도의 프로파일 지정 없이 application.yml이 적용됩니다.
-
-3. Swagger 접속 : http://localhost:9090/swagger-ui/index.html
+2. 애플리케이션 실행
+   ```bash
+   ./gradlew bootRun --args='--spring.profiles.active=docker'
 
 ---
 
@@ -88,3 +101,5 @@ Content-Type: application/json
 - 제휴 조회
 
 ➡️ 그 외 API 상세 스펙은 Swagger UI에서 확인 가능합니다.
+
+Swagger 접속 : http://localhost:9090/swagger-ui/index.html
