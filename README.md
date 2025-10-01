@@ -59,7 +59,8 @@ partner
 
 1. 애플리케이션 실행
    ```bash
-   ./gradlew bootRun
+   ./gradlew :partner-app:build
+   ./gradlew :partner-app:bootRun
 
 ### 2. Docker 실행 (PostgreSQL)
 
@@ -71,7 +72,7 @@ PostgreSQL을 직접 띄워서 실행하려면 Docker Compose를 이용합니다
 
 2. 애플리케이션 실행
    ```bash
-   ./gradlew bootRun --args='--spring.profiles.active=docker'
+   ./gradlew :partner-app:bootRun --args='--spring.profiles.active=docker'
 
 ---
 
