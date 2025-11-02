@@ -1,4 +1,4 @@
-package com.oynee.portfolio.partner.app.usecase.organization;
+package com.oynee.portfolio.partner.application.usecase.organization;
 
 import com.oynee.portfolio.partner.domain.org.model.PartnerOrganization;
 import com.oynee.portfolio.partner.domain.org.port.output.LoadOrganizationPort;

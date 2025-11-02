@@ -1,4 +1,4 @@
-package com.oynee.portfolio.partner.app.usecase.store;
+package com.oynee.portfolio.partner.application.usecase.store;
 
 import com.oynee.portfolio.partner.domain.store.dto.PartnerStoreDto;
 import com.oynee.portfolio.partner.domain.store.port.input.RetrievePartnerStoreUseCase;

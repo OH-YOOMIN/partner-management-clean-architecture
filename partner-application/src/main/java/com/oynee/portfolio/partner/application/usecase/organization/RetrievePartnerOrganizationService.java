@@ -1,4 +1,4 @@
-package com.oynee.portfolio.partner.app.usecase.organization;
+package com.oynee.portfolio.partner.application.usecase.organization;
 
 import com.oynee.portfolio.partner.domain.org.dto.PartnerOrganizationDto;
 import com.oynee.portfolio.partner.domain.org.port.input.RetrievePartnerOrganizationUseCase;
