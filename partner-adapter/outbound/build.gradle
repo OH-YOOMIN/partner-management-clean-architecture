@@ -1,14 +1,6 @@
 dependencies {
-    // Spring Boot
-    api('org.springframework.boot:spring-boot-starter-data-jpa')
-
-    // Third party library
-    implementation("org.apache.commons:commons-lang3")
-
     // Jackson
     implementation("com.fasterxml.jackson.core:jackson-annotations")
-    implementation("com.fasterxml.jackson.core:jackson-databind")
-    implementation("org.codehaus.jackson:jackson-core-asl:1.9.13")
 
     // QueryDSL
     api("com.querydsl:querydsl-jpa")
