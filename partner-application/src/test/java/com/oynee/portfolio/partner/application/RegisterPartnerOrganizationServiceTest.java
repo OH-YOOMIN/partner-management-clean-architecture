@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.web.server.ResponseStatusException;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -37,11 +36,10 @@ class RegisterPartnerOrganizationServiceTest {
 
         when(loadOrganizationPort.existsByCode("ORG001")).thenReturn(true);
 
-        ResponseStatusException exception = assertThrows(ResponseStatusException.class,
+        IllegalStateException exception = assertThrows(IllegalStateException.class,
                 () -> service.registerOrganization(command));
 
-        assertEquals("이미 사용 중인 조직 코드입니다: ORG001", exception.getReason());
-        assertEquals(409, exception.getRawStatusCode());
+        assertEquals("이미 사용 중인 조직 코드입니다: ORG001", exception.getMessage());
         verify(saveOrganizationPort, never()).saveOrganization(any(), any());
     }
 

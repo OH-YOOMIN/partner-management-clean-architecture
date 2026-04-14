@@ -4,9 +4,9 @@ import com.oynee.portfolio.partner.domain.store.dto.PartnerStoreDto;
 import com.oynee.portfolio.partner.domain.store.port.input.RetrievePartnerStoreUseCase;
 import com.oynee.portfolio.partner.domain.store.port.output.LoadPartnerStorePort;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
+
+import java.util.NoSuchElementException;
 
 @RequiredArgsConstructor
 @Service
@@ -16,7 +16,6 @@ public class RetrievePartnerStoreService implements RetrievePartnerStoreUseCase 
     @Override
     public PartnerStoreDto retrieve(Long storeId) {
         return loadPartnerStorePort.loadPartnerStore(storeId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-
+                .orElseThrow(() -> new NoSuchElementException("매장을 찾을 수 없습니다: " + storeId));
     }
 }

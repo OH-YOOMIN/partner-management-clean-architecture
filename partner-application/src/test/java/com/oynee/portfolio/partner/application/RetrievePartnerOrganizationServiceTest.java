@@ -8,9 +8,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -52,10 +52,8 @@ class RetrievePartnerOrganizationServiceTest {
         Long orgId = 2L;
         when(loadOrganizationPort.loadOrganization(orgId)).thenReturn(Optional.empty());
 
-        ResponseStatusException exception = assertThrows(ResponseStatusException.class,
-                () -> service.retrieve(orgId));
+        assertThrows(NoSuchElementException.class, () -> service.retrieve(orgId));
 
-        assertEquals(404, exception.getRawStatusCode());
         verify(loadOrganizationPort, times(1)).loadOrganization(orgId);
     }
 }

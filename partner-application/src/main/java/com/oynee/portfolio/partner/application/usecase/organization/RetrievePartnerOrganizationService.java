@@ -4,9 +4,9 @@ import com.oynee.portfolio.partner.domain.org.dto.PartnerOrganizationDto;
 import com.oynee.portfolio.partner.domain.org.port.input.RetrievePartnerOrganizationUseCase;
 import com.oynee.portfolio.partner.domain.org.port.output.LoadOrganizationPort;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
+
+import java.util.NoSuchElementException;
 
 @RequiredArgsConstructor
 @Service
@@ -16,7 +16,6 @@ public class RetrievePartnerOrganizationService implements RetrievePartnerOrgani
     @Override
     public PartnerOrganizationDto retrieve(Long orgId) {
         return loadOrganizationPort.loadOrganization(orgId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-
+                .orElseThrow(() -> new NoSuchElementException("조직을 찾을 수 없습니다: " + orgId));
     }
 }
