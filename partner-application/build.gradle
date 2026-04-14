@@ -6,3 +6,5 @@ dependencies {
     implementation(project(':partner-common'))
     implementation(project(':partner-domain'))
 }
+jar.enabled = true
+bootJar.enabled = false
