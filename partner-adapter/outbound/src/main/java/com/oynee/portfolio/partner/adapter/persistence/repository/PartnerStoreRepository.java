@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PartnerStoreRepository extends JpaRepository<PartnerStoreEntity, Long> {
+    boolean existsByCode(String code);
 }

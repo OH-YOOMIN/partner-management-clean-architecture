@@ -1,6 +1,7 @@
 package com.oynee.portfolio.partner.adapter.persistence.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.oynee.portfolio.partner.domain.store.model.PartnerStore;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -54,4 +55,18 @@ public class PartnerStoreEntity {
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 
+    @Column(name = "partner_org_id", nullable = false)
+    private Long partnerOrgId;
+
+    public static PartnerStoreEntity from(PartnerStore domain, String createdBy, String updatedBy) {
+        return PartnerStoreEntity.builder()
+                .partnerOrgId(domain.getPartnerOrgId())
+                .name(domain.getName())
+                .code(domain.getCode())
+                .address(domain.getAddress())
+                .phone(domain.getPhone())
+                .createdBy(createdBy)
+                .updatedBy(updatedBy)
+                .build();
+    }
 }

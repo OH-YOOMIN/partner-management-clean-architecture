@@ -6,4 +6,5 @@ import java.util.Optional;
 
 public interface LoadPartnerStorePort {
     Optional<PartnerStoreDto> loadPartnerStore(Long storeId);
+    boolean existsByCode(String code);
 }
