@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PartnershipRepository extends JpaRepository<PartnershipEntity, Long>, PartnershipRepositoryCustom {
+    boolean existsByPartnerOrgId(Long partnerOrgId);
+    boolean existsByPartnerStoreId(Long partnerStoreId);
 }

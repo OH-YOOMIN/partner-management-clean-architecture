@@ -6,4 +6,6 @@ import java.util.Optional;
 
 public interface LoadPartnershipPort {
     Optional<PartnershipDto> loadPartnership(Long partnershipId);
+    boolean existsByPartnerOrgId(Long partnerOrgId);
+    boolean existsByPartnerStoreId(Long partnerStoreId);
 }

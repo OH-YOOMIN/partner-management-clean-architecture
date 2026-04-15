@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -31,6 +32,12 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleTypeMismatch(MethodArgumentTypeMismatchException ex) {
         log.warn("Type Mismatch: {}", ex.getMessage());
         return build(HttpStatus.BAD_REQUEST, "잘못된 요청 파라미터 형식입니다.");
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<ErrorResponse> handleNotReadable(HttpMessageNotReadableException ex) {
+        log.warn("Malformed Request Body: {}", ex.getMessage());
+        return build(HttpStatus.BAD_REQUEST, "요청 본문을 해석할 수 없습니다.");
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
