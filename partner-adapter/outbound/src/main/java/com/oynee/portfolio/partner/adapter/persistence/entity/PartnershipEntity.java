@@ -25,10 +25,10 @@ public class PartnershipEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long partnershipId;
 
-    @Column(nullable = false)
+    @Column
     private Long partnerOrgId;
 
-    @Column(nullable = false)
+    @Column
     private Long partnerStoreId;
 
     @Column(nullable = false)

@@ -55,7 +55,7 @@ public class PartnerStoreEntity {
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 
-    @Column(name = "partner_org_id", nullable = false)
+    @Column(name = "partner_org_id")
     private Long partnerOrgId;
 
     public static PartnerStoreEntity from(PartnerStore domain, String createdBy, String updatedBy) {
